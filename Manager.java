@@ -3,6 +3,8 @@ package home.myprojects;
 import java.util.*;
 import java.io.*;
 
+
+//The class Manager currently has no
 public class Manager extends Employee{
 
 	// protected void setFirstName(){
@@ -39,6 +41,7 @@ public class Manager extends Employee{
 	// }
 
 	public Manager(){
+		// why cant you use super() here?
 		firstName = null;
 		lastName = null;
 		manager = null;
@@ -48,6 +51,7 @@ public class Manager extends Employee{
 	}
 
 	public Manager(String fN, String lN, String mng, String org1, int age1, int lvl ) {
+		// why cant you use super() here?
 		firstName = fN;
 		lastName = lN;
 		manager = mng;
@@ -56,6 +60,9 @@ public class Manager extends Employee{
 		level =lvl;
 	}
 
+	//Instead of creating a manager list, why dont you use polymorphism?
+	// Create a instance variable called isManager & run the loop & then create mark all managers with isManager as true.
+	// Also, whats the big advantage of having Manager as a seperate class? why not just have isManager as a instance variable of Employee?
 	protected static ArrayList<Manager> createManagerList(ArrayList<Employee> emp){
 		ArrayList<Manager> managers = new ArrayList<>();
 		ArrayList<String> manager_list = new ArrayList<>();
@@ -79,6 +86,7 @@ public class Manager extends Employee{
 	}
 
 	protected static Manager createManager (String[] managerRecord){
+		// Variable Names!
 		String FirstName = managerRecord[0];
 		String LastName = managerRecord[1];
 		int Age = Integer.parseInt(managerRecord[2]);

@@ -21,6 +21,7 @@ public class Employee{
 		level = 0;
 	}
 
+	// why using fN - alwyas use meaningful variable names.
 	public Employee(String fN, String lN, String mng, String org1, int age1, int lvl ) {
 		firstName = fN;
 		lastName = lN;
