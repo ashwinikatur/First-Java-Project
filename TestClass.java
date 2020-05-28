@@ -26,6 +26,8 @@ public class TestClass{
 		
 		int choice =0;
 		do{
+			// Is there a better way to do write this loop?
+			// Is there a difference between giving input 0 and 9?
 			choice = newEmployee.displayOptionAndReadUserInput(employees);
 			if(choice!=0){
 				switch(choice){

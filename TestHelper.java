@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 import java.nio.*;
 
+
 public class TestHelper{
 
 	private int count;
@@ -16,6 +17,8 @@ public class TestHelper{
 		return userInput;
 	}
 
+	// all of These methds are not helper methods. They are the main logic of the progrem.
+	// They should probably be in testclass.java.
 	protected void readEmployeeNameAndDisplayDetails(ArrayList<Employee> emp){
 		count=0;
 		System.out.println("Enter First/Last name of the employee:");
