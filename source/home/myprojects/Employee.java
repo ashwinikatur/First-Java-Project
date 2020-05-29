@@ -5,30 +5,39 @@ import java.io.*;
 
 public class Employee{
 	
+	protected int empId;
 	protected String firstName;
 	protected String lastName;
-	protected String manager;
-	protected String org;
 	protected int age;
 	protected int level;
+	protected String manager;
+	protected int managerId;
+	protected String org;
+	protected boolean isManager;
 
 	public Employee(){
+		empId = 0;
 		firstName = null;
 		lastName = null;
 		manager = null;
 		org = null;
 		age = 0;
 		level = 0;
+		managerId =0;
+		isManager = false;
 	}
 
 	// why using fN - alwyas use meaningful variable names.
-	public Employee(String fN, String lN, String mng, String org1, int age1, int lvl ) {
-		firstName = fN;
-		lastName = lN;
-		manager = mng;
-		org = org1;
-		age = age1;
-		level =lvl;
+	public Employee(int empId, String firstName, String lastName, int age, int level, String manager, int managerId, String org ) {
+		this.empId = empId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.manager = manager;
+		this.org = org;
+		this.age = age;
+		this.level =level;
+		this.managerId = managerId;
+		this.isManager = false;
 	}
 
 	// protected void setFirstName(String fN){
@@ -61,20 +70,20 @@ public class Employee{
 	// 	level =lvl;
 	// }
 
+	protected void setIsManager(){
+		this.isManager = true;
+	}
+
+	protected int getEmpId() {
+		return empId;
+	}
+
 	protected String getFirstName(){
 		return firstName;
 	}
 
 	protected String getLastName() {
 		return lastName;
-	}
-
-	protected String getManager() {
-		return manager;
-	}
-
-	protected String getOrg() {
-		return org;
 	}
 
 	protected int getAge() {
@@ -85,20 +94,50 @@ public class Employee{
 		return level;
 	}
 
+	protected String getManager() {
+		return manager;
+	}
+
+	protected int getManagerId() {
+		return managerId;
+	}
+
+	protected String getOrg() {
+		return org;
+	}
+
+	protected boolean getIsManager(){
+		return isManager;
+	}
 
 	public String toString(){
 		return " FirstName: " + firstName + " \n LastName: " + lastName + " \n Manager: " + manager + " \n Org: " + org + " \n Age " + age + " \n Level: " + level;
 	}
 
 	protected Employee createEmployee (String[] employeeRecord){
-		String firstName = employeeRecord[0];
-		String lastName = employeeRecord[1];
-		int age = Integer.parseInt(employeeRecord[2]);
-		int level = Integer.parseInt(employeeRecord[3]);
-		String manager = employeeRecord[4];
-		String org = employeeRecord[5];
+		int empId = Integer.parseInt(employeeRecord[0]);
+		String firstName = employeeRecord[1];
+		String lastName = employeeRecord[2];
+		int age = Integer.parseInt(employeeRecord[3]);
+		int level = Integer.parseInt(employeeRecord[4]);
+		String manager = employeeRecord[5];
+		int managerId = Integer.parseInt(employeeRecord[6]);
+		String org = employeeRecord[7];
 
-		return new Employee(firstName, lastName, manager, org, age, level);
+		return new Employee(empId, firstName, lastName, age, level, manager, managerId, org);
+	}
+
+	protected void setManagerFlag(ArrayList<Employee> emp){
+
+		for (Employee empl : emp) {
+			int mngId = empl.getManagerId();
+			for(Employee employ : emp){
+				if(employ.getIsManager() == false && employ.getEmpId() == mngId){
+					employ.setIsManager();
+				}
+			}
+		}
+
 	}
 
 }
